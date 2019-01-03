@@ -5,29 +5,43 @@ export default class App extends Component {
     constructor(props){
         super(props);
         this.state = {
-            email: '',
-            password: ''
+            task: '',
+            previousTask: ''
         }
     }
-    _handleEmail(text){
-        this.setState({
-            email: text.target.value
+    componentDidMount() {
+        fetch('http://localhost:3001/api/config.json').
+        then((Response) => Response.json()).
+        then((findresponse) => {
+            console.log(findresponse.tasks);
+            this.setState({
+                previousTask: findresponse.tasks
+            })
         })
     }
-    _handlePassword(text){
-        this.setState({
-            password: text.target.value
-        })
-    }
+    // _onChange(e){
+    //     this.setState({
+    //         task: e.target.value
+    //     })
+    // }
+
+    // _onSubmit(){
+    //     console.log(this.state.task)
+    // }
 
     render() {
-        
 
+        const {previousTask} = this.state;
         return (
             <div>
-                <input type="email" onChange={(text) => _this.handleEmail(text)}/>
-                <input type="password" onChange={(text) => _this.handlePassword(text)}/>
-                <button>Login</button>
+                {
+                    previousTask.map((data,key) => 
+
+                        <span key={key}>{data.description}</span>
+                    )
+                }
+                 {/* <input type="text" onChange={(e) => this._onChange(e)}/> */}
+                 {/* <button type="submit" onClick={(e) => this._onSubmit(e)}>Submit</button> */}
             </div>
         )
     }

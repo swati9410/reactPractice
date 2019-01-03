@@ -1,12 +1,12 @@
-import { fork } from 'redux-saga/effects';
-import tableSaga from './table';
-import filterSaga from './filter';
+// import { fork } from 'redux-saga/effects';
+// import tableSaga from './table';
+// import filterSaga from './filter';
 
-function* rootSaga() {
-    yield [
-        fork(tableSaga),
-        fork(filterSaga)
-    ];
-}
+// function* rootSaga() {
+//     yield [
+//         fork(tableSaga),
+//         fork(filterSaga)
+//     ];
+// }
 
-export default rootSaga;
+// export default rootSaga;
