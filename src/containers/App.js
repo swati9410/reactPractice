@@ -9,14 +9,9 @@ export default class App extends Component {
             password: ''
         }
     }
-    _handleEmail(text){
+    _handleChange(e){
         this.setState({
-            email: text.target.value
-        })
-    }
-    _handlePassword(text){
-        this.setState({
-            password: text.target.value
+            email: e.target.value
         })
     }
 
@@ -25,9 +20,9 @@ export default class App extends Component {
 
         return (
             <div>
-                <input type="email" onChange={(text) => _this.handleEmail(text)}/>
-                <input type="password" onChange={(text) => _this.handlePassword(text)}/>
-                <button>Login</button>
+                <input name="email" type="email" placeholder="Enter email" onChange={this._handleChange(e)} value={this.state.email}/>
+                <input name="password" type="password" placeholder="Enter password" onChange={this._handleChange(e)} value={this.state.password}/>
+                <button onClick={this._onSubmit()}>Login</button>
             </div>
         )
     }
