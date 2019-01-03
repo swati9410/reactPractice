@@ -18,4 +18,10 @@
     npm run build creates a production build by default.
 
     To create a development build, set the NODE_ENV environment variable to development while running this command.
+    
+    
+# Building2
+    npm run build creates a production build by default.
+
+    To create a development build, set the NODE_ENV environment variable to development while running this command.
 
