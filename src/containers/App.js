@@ -5,8 +5,12 @@ export default class App extends Component {
     constructor(props){
         super(props);
         this.state = {
-            task: '',
-            previousTask: ''
+            previousTask: [],
+            _id: '', 
+            description: '',
+            status: '',
+            newTasks: [],
+            finalTask: []
         }
     }
     componentDidMount() {
@@ -19,15 +23,25 @@ export default class App extends Component {
             })
         })
     }
-    // _onChange(e){
-    //     this.setState({
-    //         task: e.target.value
-    //     })
-    // }
+    _onChange(e){
+        const {name, value} = e.target;
+        this.setState({
+            [name]: value
+        })
+    }
 
-    // _onSubmit(){
-    //     console.log(this.state.task)
-    // }
+    _onSubmit(){
+        const {_id, description, status} = this.state;
+        this.setState({ newTasks: [ ...this.state.newTasks,  {"_id": _id , "description": description , "status": status} ] })
+        var final = this.state.previousTask.concat(this.state.newTasks)
+        this.setState({
+            finalTask: final
+        })
+        // console.log(this.state.task)
+        // this.state.previousTask.id = this.state.task;
+        // tasks['_id'] = '3';
+        // console.log("new key: " + tasks);
+    }
 
     render() {
 
@@ -36,12 +50,17 @@ export default class App extends Component {
             <div>
                 {
                     previousTask.map((data,key) => 
-
-                        <span key={key}>{data.description}</span>
+                        <ul>
+                            <li key={key}>{data.description}</li>
+                        </ul>
                     )
                 }
-                 {/* <input type="text" onChange={(e) => this._onChange(e)}/> */}
-                 {/* <button type="submit" onClick={(e) => this._onSubmit(e)}>Submit</button> */}
+                <input name={"_id"} type="text" value={this.state.id} placeholder={"Enter Id"}onChange={(e) => this._onChange(e)}/>
+                <input name={"description"} type="text" value={this.state.description} placeholder={"Enter Description"} onChange={(e) => this._onChange(e)}/>
+                <input name={"status"} type="text" value={this.state.status} placeholder={"Enter Status"} onChange={(e) => this._onChange(e)}/>
+                 <button type="submit" onClick={(e) => this._onSubmit(e)}>Submit</button>
+
+
             </div>
         )
     }
