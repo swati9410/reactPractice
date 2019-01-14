@@ -133,3 +133,25 @@ h2{
     float: left;
     width: 25%;
 }
+
+
+
+
+
+
+/* todo list start */
+.taskCard{
+    background: #ccc;
+    padding: 8px 10px;
+    box-shadow: 3px 10px 10px rgba(0,0,0,0.2);
+    width: 500px;
+}
+.taskCard span{
+    float: right;
+    text-decoration: underline;
+    margin-left: 10px;
+}
+.taskDescription{
+    
+}
+/* todo list end */

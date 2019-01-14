@@ -5,12 +5,10 @@ export default class App extends Component {
     constructor(props){
         super(props);
         this.state = {
-            previousTask: [],
+            taskList: [],
             _id: '', 
             description: '',
-            status: '',
-            newTasks: [],
-            finalTask: []
+            status: ''
         }
     }
     componentDidMount() {
@@ -19,7 +17,7 @@ export default class App extends Component {
         then((findresponse) => {
             console.log(findresponse.tasks);
             this.setState({
-                previousTask: findresponse.tasks
+                taskList: findresponse.tasks
             })
         })
     }
@@ -31,36 +29,45 @@ export default class App extends Component {
     }
 
     _onSubmit(){
-        const {_id, description, status} = this.state;
-        this.setState({ newTasks: [ ...this.state.newTasks,  {"_id": _id , "description": description , "status": status} ] })
-        var final = this.state.previousTask.concat(this.state.newTasks)
-        this.setState({
-            finalTask: final
-        })
-        // console.log(this.state.task)
-        // this.state.previousTask.id = this.state.task;
-        // tasks['_id'] = '3';
-        // console.log("new key: " + tasks);
+        const {_id, description} = this.state;
+        if(_id != '' && description != ''){
+            this.setState({ taskList: [ ...this.state.taskList,  {"_id": _id , "description": description} ] })
+            document.getElementsByClassName('errorMsg')[0].innerHTML = '';
+        }
+        else if(_id == ''){
+            document.getElementsByClassName('errorMsg')[0].innerHTML = 'Enter Id';
+        }
+        else if(description == ''){
+            document.getElementsByClassName('errorMsg')[0].innerHTML = 'Enter description';
+        }
+        else{
+            document.getElementsByClassName('errorMsg')[0].innerHTML = 'Enter Id, description';
+        }
+    }
+
+    _onClick(){
+        
     }
 
     render() {
 
-        const {previousTask} = this.state;
+        const {taskList} = this.state;
         return (
             <div>
                 {
-                    previousTask.map((data,key) => 
-                        <ul>
-                            <li key={key}>{data.description}</li>
-                        </ul>
+                    taskList.map((data,key) => 
+                        <p className={"taskCard"}>
+                            <i id={"taskDescription"}>{data.description}</i>
+                            <span id="editTask" onClick={(e) => this._onClick(e)} >Edit</span>
+                            <span id={"deleteTask"}>Delete</span>
+                        </p>
                     )
                 }
                 <input name={"_id"} type="text" value={this.state.id} placeholder={"Enter Id"}onChange={(e) => this._onChange(e)}/>
                 <input name={"description"} type="text" value={this.state.description} placeholder={"Enter Description"} onChange={(e) => this._onChange(e)}/>
-                <input name={"status"} type="text" value={this.state.status} placeholder={"Enter Status"} onChange={(e) => this._onChange(e)}/>
-                 <button type="submit" onClick={(e) => this._onSubmit(e)}>Submit</button>
+                <button type="submit" onClick={(e) => this._onSubmit(e)}>Submit</button>
 
-
+                <span style={{color:"red"}} className={"errorMsg"}></span>
             </div>
         )
     }
