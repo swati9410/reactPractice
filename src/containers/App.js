@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {State} from './State';
+import State from './State';
 
 
 export default class App extends Component {
@@ -58,11 +58,10 @@ export default class App extends Component {
     }
 
     render() {
-
         const {taskList} = this.state;
         return (
             <div>
-                {
+                {/* {
                     taskList.map((data,key) => 
                         <p className={"taskCard"}>
                             <input id={"taskDescription"} placeholder="Enter task" value={data.description} className={"taskDescription"} disabled/>
@@ -70,14 +69,11 @@ export default class App extends Component {
                             <span id={"deleteTask"}  onClick={(e) => this._onDelete(e,key)}>Delete</span>
                         </p>
                     )
-                }
+                } */}
                 {/* <input name={"_id"} type="text" value={this.state.id} placeholder={"Enter Id"}onChange={(e) => this._onChange(e)}/> */}
-                <input name={"description"} type="text" value={this.state.description} placeholder={"Enter Description"} onChange={(e) => this._onChange(e)}/>
+                {/* <input name={"description"} type="text" value={this.state.description} placeholder={"Enter Description"} onChange={(e) => this._onChange(e)}/>
                 <button type="submit" onClick={(e) => this._onSubmit(e)}>Submit</button>
-                <span style={{color:"red"}} className={"errorMsg"}></span>
-
-
-
+                <span style={{color:"red"}} className={"errorMsg"}></span> */}
                 <State/>
             </div>
         )
