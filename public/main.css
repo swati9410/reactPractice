@@ -145,11 +145,26 @@ h2{
     padding: 8px 10px;
     box-shadow: 3px 10px 10px rgba(0,0,0,0.2);
     width: 500px;
+    min-height: 24px;
+    position: relative;
+}
+.taskDescription{
+    top: 3px;
+    position: relative;
+    width: calc(100% - 110px);
+    float: left;
+    background: transparent;
 }
 .taskCard span{
     float: right;
     text-decoration: underline;
     margin-left: 10px;
+    position: absolute;
+    right: 10px;
+    bottom: 11px;
+}
+.taskCard span#editTask{
+    right: 60px;
 }
 .taskDescription{
     

@@ -1,0 +1,28 @@
+{
+    "states": [
+        {
+            "state": "abc",
+            "districts": [
+                "a123",
+                "a456",
+                "a789"
+            ]
+        },
+        {
+            "state": "def",
+            "districts": [
+                "d123",
+                "d456",
+                "d789"
+            ]
+        },
+        {
+            "state": "ghi",
+            "districts": [
+                "g123",
+                "g456",
+                "g789"
+            ]
+        }
+    ]
+}

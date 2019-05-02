@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {State} from './State';
 
 
 export default class App extends Component {
@@ -6,9 +7,7 @@ export default class App extends Component {
         super(props);
         this.state = {
             taskList: [],
-            _id: '', 
-            description: '',
-            status: ''
+            description: ''
         }
     }
     componentDidMount() {
@@ -29,24 +28,33 @@ export default class App extends Component {
     }
 
     _onSubmit(){
-        const {_id, description} = this.state;
-        if(_id != '' && description != ''){
-            this.setState({ taskList: [ ...this.state.taskList,  {"_id": _id , "description": description} ] })
+        const {description} = this.state;
+        if(description != ''){
+            this.setState({ taskList: [ ...this.state.taskList,  {"description": description} ] })
             document.getElementsByClassName('errorMsg')[0].innerHTML = '';
         }
-        else if(_id == ''){
-            document.getElementsByClassName('errorMsg')[0].innerHTML = 'Enter Id';
-        }
-        else if(description == ''){
-            document.getElementsByClassName('errorMsg')[0].innerHTML = 'Enter description';
-        }
         else{
-            document.getElementsByClassName('errorMsg')[0].innerHTML = 'Enter Id, description';
+            document.getElementsByClassName('errorMsg')[0].innerHTML = 'Enter description';
         }
     }
 
-    _onClick(){
-        
+    _onDelete(e,key){
+        var array = this.state.taskList;
+        array.splice(key, 1);
+        this.setState({
+            taskList: array
+        })
+        console.log(array);
+    }
+
+    _taskOnChange(key){
+        const tasklist = this.state.taskList;
+        console.log(tasklist[key]);
+        console.log(tasklist);
+    }
+
+    _onEdit(e,key){
+        document.getElementsByClassName('taskDescription')[key].removeAttribute("disabled");
     }
 
     render() {
@@ -57,17 +65,20 @@ export default class App extends Component {
                 {
                     taskList.map((data,key) => 
                         <p className={"taskCard"}>
-                            <i id={"taskDescription"}>{data.description}</i>
-                            <span id="editTask" onClick={(e) => this._onClick(e)} >Edit</span>
-                            <span id={"deleteTask"}>Delete</span>
+                            <input id={"taskDescription"} placeholder="Enter task" value={data.description} className={"taskDescription"} disabled/>
+                            <span id={"editTask"}  onClick={(e) => this._onEdit(e,key)}>Edit</span>
+                            <span id={"deleteTask"}  onClick={(e) => this._onDelete(e,key)}>Delete</span>
                         </p>
                     )
                 }
-                <input name={"_id"} type="text" value={this.state.id} placeholder={"Enter Id"}onChange={(e) => this._onChange(e)}/>
+                {/* <input name={"_id"} type="text" value={this.state.id} placeholder={"Enter Id"}onChange={(e) => this._onChange(e)}/> */}
                 <input name={"description"} type="text" value={this.state.description} placeholder={"Enter Description"} onChange={(e) => this._onChange(e)}/>
                 <button type="submit" onClick={(e) => this._onSubmit(e)}>Submit</button>
-
                 <span style={{color:"red"}} className={"errorMsg"}></span>
+
+
+
+                <State/>
             </div>
         )
     }
