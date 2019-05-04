@@ -2,27 +2,55 @@
     "states": [
         {
             "state": "abc",
-            "districts": [
-                "a123",
-                "a456",
-                "a789"
-            ]
-        },
+            "districts": {
+                "a123": {
+                    "tehsil": [
+                        "aa123",
+                        "aa456",
+                        "aa789"
+                    ]
+                },
+                "b123": {
+                    "tehsil": [
+                        "bb123",
+                        "bb456",
+                        "bb789"
+                    ]
+                },
+                "c123": {
+                    "tehsil": [
+                        "cc123",
+                        "cc456",
+                        "cc789"
+                    ]
+                }
+            }
+	    },
         {
             "state": "def",
-            "districts": [
-                "d123",
-                "d456",
-                "d789"
-            ]
-        },
-        {
-            "state": "ghi",
-            "districts": [
-                "g123",
-                "g456",
-                "g789"
-            ]
+            "districts": {
+                "d123": {
+                    "tehsil": [
+                        "dd123",
+                        "dd456",
+                        "dd789"
+                    ]
+                },
+                "e123": {
+                    "tehsil": [
+                        "ee123",
+                        "ee456",
+                        "ee789"
+                    ]
+                },
+                "f123": {
+                    "tehsil": [
+                        "ff123",
+                        "ff456",
+                        "ff789"
+                    ]
+                }
+            }
         }
     ]
 }

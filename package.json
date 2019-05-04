@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --progress --watch",
     "build": "webpack",
-      "start": "webpack-dev-server --open --watch --port 3001",
+    "start": "webpack-dev-server --open --watch --port 3001",
     "prod": "NODE_ENV=production webpack -p--config. / webpack.production.config.js"
   },
   "author": "Shashank Pandey <shashankpandey2012@gmail.com, me@shashankpandey.me>",
