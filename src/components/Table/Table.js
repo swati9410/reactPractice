@@ -7,7 +7,7 @@ class Table extends Component{
     }
 
     render(){
-        const { data, dragEmployee, num, draggedChair, dragOverChair } = this.props;
+        const { data, num, dragEmployee, draggedChair, dragOverChair } = this.props;
         return (
             <div className="table_space">
                 <div className="chair_container disp_inli">

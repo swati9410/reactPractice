@@ -7,7 +7,7 @@ export default class Filter extends Component{
     }
 
     render(){
-        const { open, selectedOption, teams,clickButton,loadTeam} = this.props;
+        const { open, selectedOption, teams,loadTeam, clickButton} = this.props;
         const teamsCheckBox = map(teams.data,(item,index)=>{
             return (
 
