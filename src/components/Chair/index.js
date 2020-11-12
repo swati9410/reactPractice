@@ -68,7 +68,7 @@ class Chair extends Component {
     }
 
     render() {
-        const {chairData, index, tableIndex, draggedChair, draggable,hoverdetails} = this.props;
+        const {chairData, index, tableIndex, draggedChair,hoverdetails, draggable} = this.props;
         const occupied = chairData.occupied;
         const matched = chairData.matched;
         const hover = chairData.hover;
